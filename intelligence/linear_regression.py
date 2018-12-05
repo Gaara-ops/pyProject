@@ -15,6 +15,8 @@ def runplt():
 plt = runplt()
 X = [[6],[8],[10],[14],[18]]
 y = [[7],[9],[13],[17.5],[18]]
+X_test = [[8],[9],[11],[16],[12]]
+y_test = [[11],[8.5],[15],[18],[11]]
 plt.plot(X,y,'k.')
 # ~ plt.show()
 X2 = [[0],[10],[14],[25]]
@@ -23,6 +25,8 @@ model = LinearRegression()
 #LinearRegression的fit()方法学习一元线性回归模型：y = α + βx
 # β=协方差/方差    α = y平均 - βx平均
 model.fit(X,y)
+#计算R方
+print(model.score(X_test,y_test))
 y2 = model.predict(X2)
 #残差平方和
 print('residual sum of squares:%.2f' % np.mean((model.predict(X)-y)**2))
