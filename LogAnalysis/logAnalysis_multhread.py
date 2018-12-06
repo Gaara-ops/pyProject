@@ -11,15 +11,21 @@ threadStartIndex = 29
 DictName = {}
 DictTime = {}
 timeFormat = '%Y-%m-%d %H:%M:%S:%f'#time format
-allSaveData = ''
+DictDataByThreadID = {}
 DictTimeUse = {}
 DictTimeSpace = {}
 allTimeData = ''
 allTimeList = []
 
+def SaveDataByThread(threadid,data):
+    global DictDataByThreadID
+    nowData = ''
+    if threadid in DictDataByThreadID:
+        nowData = DictDataByThreadID.get(threadid)
+    DictDataByThreadID[threadid] = nowData+data
+        
 #analysis one line info and save time and interface name
 def SaveInfo(line,flag):
-    global allSaveData
     if(flag in line):
         #find thread id
         strFindThread = line[threadStartIndex:]
@@ -29,13 +35,13 @@ def SaveInfo(line,flag):
         startIndex = line.find(flag)
         interfaceStr = line[startIndex:]#get all interface name
         resStrTime = line[1:timelength]#get time
-        allSaveData += resStrTime+'--'+resThreadID+'--' + interfaceStr
-        
+        onelinedata = resStrTime+'--'+resThreadID+'--' + interfaceStr
         ifArr = interfaceStr.split('|')#≈–∂œ√¸¡Ó «∑Ò”––ß
         if(len(ifArr) < 3):
             return 0,'-1','-1','-1'
         lastIFName = ifArr[-2]#get last name
         resStrName = lastIFName.strip()#remove the blank space
+        SaveDataByThread(resThreadID,onelinedata)
         return 1,resStrTime,resStrName,resThreadID#return mul parameters
     return 0,'-1','-1','-1'
 
@@ -91,7 +97,7 @@ def CalculateAllTime(strtime,threadid,strname):
         allTimeData += strtime+'--'+threadid+'--'+strname+'\n'
 
 def LoadData(strfile):
-    global allSaveData,DictTimeUse,DictTimeSpace
+    global DictTimeUse,DictTimeSpace
     lines=[]
     with open(strfile) as pFile:
         lines = pFile.readlines()
@@ -114,14 +120,13 @@ def LoadData(strfile):
             UpdateTimeUse(threadID,timeuse)
             if(timeuse > 0.1):
                 print (strName,'--',timeuse)
-            allSaveData += strName + '--' + str(timeuse) + '\n'
+            strTimeUse = strName + '--' + str(timeuse) + '\n'
+            SaveDataByThread(threadID,strTimeUse)
             del DictName[threadID]
             del DictTime[strName]
             DictName[threadID] = strName
             DictTime[strName] = strTime
-            
-    
-            
+
 logpath = 'G:/iMAGESServer/branches/Version2/Bin/Win32/Server/MinGW/Debug/SpiderSightServer/Log/log.log'
 LoadData(logpath)
 now_time = datetime.datetime.now()
@@ -129,10 +134,13 @@ time_str = datetime.datetime.strftime(now_time,'%Y%m%d_%H_%M_%S')
 outfilepath = time_str + '_logAnalysis.txt'
 outfilepath = 'test.txt'
 with open(outfilepath,'w') as saveFile:#write data to file
-    saveFile.write(allSaveData+'\n\n'+allTimeData)
+    for key,value in DictDataByThreadID.items():
+        saveFile.write(key+'--\n'+value+'\n\n')
+
 print ('end')
 print ('DictTimeUse:',DictTimeUse)
 print ('DictTimeSpace:',DictTimeSpace)
 print ('all time use:',GetTimeInterval(allTimeList[0],allTimeList[-1]))
 
 pausett = input('pause')
+
