@@ -11,12 +11,40 @@ threadStartIndex = 29
 DictName = {}
 DictTime = {}
 timeFormat = '%Y-%m-%d %H:%M:%S:%f'#time format
-DictDataByThreadID = {}
-DictTimeUse = {}
-DictTimeSpace = {}
+DictDataByThreadID = {}#the data of all thread
+DictTimeUse = {}#interface time use
+DictTimeSpace = {}#space time Use
 allTimeData = ''
-allTimeList = []
+allTimeList = []#all time data
 
+#other flag to find------------------------------------
+OtherFlagList = ['CalcificationScoreCalculation','GenerateStraightenVolume','ComputeAreaCurve']
+OtherFlagData = {}
+def SaveOtherDataByThread(threadid,data):
+    global OtherFlagData
+    nowData = ''
+    if threadid in OtherFlagData:
+        nowData = OtherFlagData.get(threadid)
+    OtherFlagData[threadid] = nowData+data
+
+
+def GetOtherFlagInfo(line,flag):
+    if flag in line:
+        strFindThread = line[threadStartIndex:]
+        threadEndIndex = strFindThread.find(']')
+        resThreadID = strFindThread[0:threadEndIndex]
+        resStrTime = line[1:timelength]#get time
+        onelinedata = resStrTime+'--'+resThreadID+'--' + flag+'\n'
+        SaveOtherDataByThread(resThreadID,onelinedata)
+
+def FindOtherFlag(line):
+    for tempfg in OtherFlagList:
+        tempfg1 = tempfg + ' Begin'
+        tempfg2 = tempfg + ' End'
+        GetOtherFlagInfo(line,tempfg1)
+        GetOtherFlagInfo(line,tempfg2)
+        
+#---------------------------------
 def SaveDataByThread(threadid,data):
     global DictDataByThreadID
     nowData = ''
@@ -102,6 +130,7 @@ def LoadData(strfile):
     with open(strfile) as pFile:
         lines = pFile.readlines()
     for line in lines:
+        FindOtherFlag(line)
         res1,strTime,strName,threadID = SaveInfo(line,flag1)
         if(res1 == 1):
             CalculateAllTime(strTime,threadID,strName)
@@ -119,7 +148,7 @@ def LoadData(strfile):
             timeuse = GetInterfaceTime(threadID,strTime)
             UpdateTimeUse(threadID,timeuse)
             if(timeuse > 0.1):
-                print (strName,'--',timeuse)
+                print (threadID,'--',strName,'--',timeuse)
             strTimeUse = strName + '--' + str(timeuse) + '\n'
             SaveDataByThread(threadID,strTimeUse)
             del DictName[threadID]
@@ -128,19 +157,41 @@ def LoadData(strfile):
             DictTime[strName] = strTime
 
 logpath = 'G:/iMAGESServer/branches/Version2/Bin/Win32/Server/MinGW/Debug/SpiderSightServer/Log/log.log'
+#logpath = 'Unknow.log'
 LoadData(logpath)
 now_time = datetime.datetime.now()
 time_str = datetime.datetime.strftime(now_time,'%Y%m%d_%H_%M_%S')
 outfilepath = time_str + '_logAnalysis.txt'
 outfilepath = 'test.txt'
+
+def CalculateOtherFlagTime():
+    for key,value in OtherFlagData.items():
+        time1 = ''
+        time2 = ''
+        namearr = value.split('\n')
+        for line in namearr:
+            if 'Begin' in line:
+                time1 = line[:timelength-1]
+            if 'End' in line:
+                time2 = line[:timelength-1]
+            if time1 != '' and time2 != '':
+                tempuse = GetTimeInterval(time1,time2)
+                print (line[timelength:],'---',tempuse)
+                time1=''
+                time2=''
+
 with open(outfilepath,'w') as saveFile:#write data to file
     for key,value in DictDataByThreadID.items():
         saveFile.write(key+'--\n'+value+'\n\n')
+    for key,value in OtherFlagData.items():
+        saveFile.write(key+'--\n'+value+'\n\n')
 
+        
 print ('end')
 print ('DictTimeUse:',DictTimeUse)
 print ('DictTimeSpace:',DictTimeSpace)
 print ('all time use:',GetTimeInterval(allTimeList[0],allTimeList[-1]))
-
+print ('\nOther interface use time:')
+CalculateOtherFlagTime()
 pausett = input('pause')
 
