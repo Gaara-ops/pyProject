@@ -1,0 +1,35 @@
+{
+   "isSuccess": true,
+   "resultCode": "0",
+   "resultMsg": "查询出 1条 数据",
+   "resultDatas": {
+       "hospitalAiList": [
+            {
+                "aiUrl": "{\"param\":\"\",\"path\":\"\"}",
+                "appId": "100017",
+                "aiType": "LungCareAI",
+                "aiDescription": "WODE AI",
+                "aiTag": "ACCURADCommon",
+                "aiTitle": "{\"en-US\":\"WODE AI\",\"zh-CN\":\"我的AI\"}",
+                "aiIcon": "AAABC",
+                "companyName":"Accurand",
+                "aiApplication":"DKI",
+                "aiAppCode":"DKI",
+                "aiName":"GG"
+            },
+			{
+                "aiUrl": "{\"param\":\"\",\"path\":\"\"}",
+                "appId": "100018",
+                "aiType": "LungCareAI",
+                "aiDescription": "WODE AI",
+                "aiTag": "ACCURADCommon",
+                "aiTitle": "{\"en-US\":\"WODE AI\",\"zh-CN\":\"我的AI\"}",
+                "aiIcon": "AAABC",
+                "companyName":"Accurand",
+                "aiApplication":"Cardiac",
+                "aiAppCode":"Cardiac",
+                "aiName":"GG"
+            }
+       ]
+   }
+}

@@ -1,0 +1,8 @@
+{
+	"isSuccess": true,
+	"jsonData": [{
+		"dataBuffer": "{\"seriesFunInfo\":[{\"DKIInfo\":{\"FAPath\":\"FA.raw\",\"MDPath\":\"MD.raw\",\"ADPath\":\"AD.raw\",\"RDPath\":\"RD.raw\",\"MKPath\":\"MK.raw\",\"AKPath\":\"AK.raw\",\"RKPath\":\"RK.raw\"}, \"CardiacInfo\":{\"path\":\"CardiacSegResult.raw\"},\"CoronaryInfo\":[{\"HistIndex\":\"2\",\"garyAdjust\":\"1\",\"path\":\"CoronaryArteryExtractResult.raw\"}],\"FunCode\":\"DKI\",\"strSeriesUID\":\"1.2.840.113619.2.312.4120.7569077.11569.1353219797.717\"},{\"CardiacInfo\":{\"path\":\"CardiacSegResult.raw\"},\"CoronaryInfo\":[{\"HistIndex\":\"2\",\"garyAdjust\":\"1\",\"path\":\"CoronaryArteryExtractResult.raw\"}],\"FunCode\":\"Cardiac\",\"strSeriesUID\":\"1.3.12.2.1107.5.1.4.73280.30000017112923172725600021220\"}]}\r\n"
+	}],
+	"resultCode": "0",
+	"resultMsg": "success"
+}

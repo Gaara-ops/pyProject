@@ -1,0 +1,10 @@
+{
+    "isSuccess": true,
+    "resultCode": "0",
+    "resultMsg": "success",
+    "jsonData": [
+        {
+            "dataBuffer": "{\"strSeriesUID\":\"1.2.840.113619.2.312.4120.7569077.11569.1353219797.717\",\"DKIInfo\":{\"FAImageInfo\":{\"fRescaleSlope\":1.0,\"fRescaleIntercept\":0.0,\"nBitsAllocated\":16,\"nPixelRepresentation\":1,\"nDataStoreMode\":2},\"MDImageInfo\":{\"fRescaleSlope\":1.0,\"fRescaleIntercept\":0.0,\"nBitsAllocated\":16,\"nPixelRepresentation\":1,\"nDataStoreMode\":2},\"ADImageInfo\":{\"fRescaleSlope\":1.0,\"fRescaleIntercept\":0.0,\"nBitsAllocated\":16,\"nPixelRepresentation\":1,\"nDataStoreMode\":2},\"RDImageInfo\":{\"fRescaleSlope\":1.0,\"fRescaleIntercept\":0.0,\"nBitsAllocated\":16,\"nPixelRepresentation\":1,\"nDataStoreMode\":2},\"MKImageInfo\":{\"fRescaleSlope\":1.0,\"fRescaleIntercept\":0.0,\"nBitsAllocated\":16,\"nPixelRepresentation\":1,\"nDataStoreMode\":2},\"AKImageInfo\":{\"fRescaleSlope\":1.0,\"fRescaleIntercept\":0.0,\"nBitsAllocated\":16,\"nPixelRepresentation\":1,\"nDataStoreMode\":2},\"RKImageInfo\":{\"fRescaleSlope\":1.0,\"fRescaleIntercept\":0.0,\"nBitsAllocated\":16,\"nPixelRepresentation\":1,\"nDataStoreMode\":2}}}"
+        }
+    ]
+}
