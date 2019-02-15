@@ -12,8 +12,10 @@ def ParseJson(jsonstr):
 	json_ai["dataBuffer"] = jsonstr
 	json_ai["userID"] = "159357"
 	json_ai["aiDateTime"] = "20190123"
+	json_arr = []
+	json_arr.append(json_ai)
 	json_result = {}
-	json_result["aiResult"] = json_ai
+	json_result["aiResult"] = json_arr
 	json_result["isSuccess"] = 1
 	json_result["resultCode"] = "0"
 	json_result["resultMsg"] = "success"
