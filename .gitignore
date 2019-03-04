@@ -2,3 +2,6 @@ __pycache__/
 /use_api/*.svg
 *.txt
 *.log
+*.raw
+*.json
+ll_env/
