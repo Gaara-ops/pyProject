@@ -53,47 +53,23 @@ def GetDataFromAIStore(request):
     return JsonResponse(j)
 
 
-filename = "functionlist.json"
-
-
-def ParseParamInfo(jsonobj):
-    global filename
-    functionName = jsonobj["functionName"]
-    if (functionName == "FunctionList"):
-        filename = "functionlist.json"
-    elif (functionName == "DataAttribute"):
-        filename = "volumeinfo.json"
-    elif (functionName == "AD.raw"):
-        filename = "paramraw/AD.raw"
-    elif (functionName == "AK.raw"):
-        filename = "paramraw/AK.raw"
-    elif (functionName == "FA.raw"):
-        filename = "paramraw/FA.raw"
-    elif (functionName == "MD.raw"):
-        filename = "paramraw/MD.raw"
-    elif (functionName == "MK.raw"):
-        filename = "paramraw/MK.raw"
-    elif (functionName == "RD.raw"):
-        filename = "paramraw/RD.raw"
-    elif (functionName == "RK.raw"):
-        filename = "paramraw/RK.raw"
-
-
 def ParseParamInfoEx(jsonobj):
-    global filename
+    filename = ""
     functionName = jsonobj["functionName"]
+    seriesUID = jsonobj["seriesInstanceUID"]
     if functionName == "FunctionList":
-        filename = "functionlist.json"
+        filename = seriesUID+"/functionlist.json"
     elif functionName == "DataAttribute":
-        filename = "volumeinfo.json"
+        filename = seriesUID+"/volumeinfo.json"
     else:
-        filename = functionName
+        filename = seriesUID+"/"+functionName
+    return filename
 
 
-def GetFunlistInfo(request):
+def GetAIMiddleInfo(request):
     jsonstr = (str(request.body, 'utf-8'))
     jsonobj = json.loads(jsonstr)
-    ParseParamInfoEx(jsonobj)
+    filename = ParseParamInfoEx(jsonobj)
     if '.raw' in filename:
         rawData = open(filename, 'rb').read()
         return HttpResponse(rawData)

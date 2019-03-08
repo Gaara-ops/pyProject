@@ -1,8 +1,0 @@
-{
-	"isSuccess": true,
-	"jsonData": [{
-		"dataBuffer": "{\"seriesFunInfo\":[{\"DKIInfo\":{\"FAPath\":\"data1/FA.raw\",\"MDPath\":\"data1/MD.raw\",\"ADPath\":\"data1/AD.raw\",\"RDPath\":\"data1/RD.raw\",\"MKPath\":\"data1/MK.raw\",\"AKPath\":\"data1/AK.raw\",\"RKPath\":\"data1/RK.raw\"}, \"NODDIInfo\":{\"VICPath\":\"data1/FA.raw\",\"ODIPath\":\"data1/MD.raw\",\"VISOPath\":\"data1/AD.raw\",\"VECPath\":\"data1/RD.raw\"}, \"CardiacInfo\":{\"path\":\"CardiacSegResult.raw\"},\"CoronaryInfo\":[{\"HistIndex\":\"2\",\"garyAdjust\":\"1\",\"path\":\"CoronaryArteryExtractResult.raw\"}],\"FunCode\":\"DKI|NODDI\",\"strSeriesUID\":\"1.2.840.113619.2.312.4120.7569077.11569.1353219797.717\"},{\"CardiacInfo\":{\"path\":\"CardiacSegResult.raw\"},\"CoronaryInfo\":[{\"HistIndex\":\"2\",\"garyAdjust\":\"1\",\"path\":\"CoronaryArteryExtractResult.raw\"}],\"FunCode\":\"Cardiac\",\"strSeriesUID\":\"1.3.12.2.1107.5.1.4.73280.30000017112923172725600021220\"},{\"DKIInfo\": {\"FAPath\": \"data2/FA.raw\", \"MDPath\": \"data2/MD.raw\", \"ADPath\": \"data2/AD.raw\", \"RDPath\": \"data2/RD.raw\", \"MKPath\": \"data2/MK.raw\", \"AKPath\": \"data2/AK.raw\", \"RKPath\": \"data2/RK.raw\"}, \"DTIInfo\": {}, \"NODDIInfo\": {}, \"VRSInfo\": {}, \"CardiacInfo\": {}, \"CoronaryInfo\": [], \"FunCode\": \"DKI\", \"strSeriesUID\": \"1.2.840.113619.2.312.4120.7569077.28930.1422315800.522\"}]}\r\n"
-	}],
-	"resultCode": "0",
-	"resultMsg": "success"
-}

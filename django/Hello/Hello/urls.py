@@ -25,5 +25,5 @@ urlpatterns = [
 	url(r'^SaveUserAIInfo$',view.SaveUserAIInfo),
 	url(r'^DownLoadAIFeedBack$',view.DownLoadAIFeedBack),
 	url(r'^GetDataFromAIStore$',view.GetDataFromAIStore),
-	url(r'^GetFunlistInfo$',view.GetFunlistInfo),
+	url(r'^GetAIMiddleInfo$',view.GetAIMiddleInfo),
 ]
