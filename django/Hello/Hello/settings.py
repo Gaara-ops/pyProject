@@ -25,7 +25,7 @@ SECRET_KEY = 'n4lx03&%*3%s@w1q%34jgh^9ac$(lq)s$t2u)@_ruk)^a11&jh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*","192.168.1.59","192.168.1.68"]
 
 
 # Application definition
@@ -112,6 +112,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 100000000000
 
 
 # Static files (CSS, JavaScript, Images)

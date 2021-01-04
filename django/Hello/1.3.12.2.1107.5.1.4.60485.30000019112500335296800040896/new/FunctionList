@@ -1,0 +1,32 @@
+{
+    "seriesFunInfo": [
+        {
+            "CardiacInfo": {
+                "path": "CardiacSegResult_1.3.12.2.1107.5.1.4.60485.30000019112500335296800040896_120.0.raw"
+            },
+            "CoronaryInfo": [
+                {
+                    "HistIndex": "2",
+                    "garyAdjust": "1",
+                    "path": "CoronaryArteryExtractResult_1.3.12.2.1107.5.1.4.60485.30000019112500335296800040896_120.0.raw"
+                }
+            ],
+            "FunCode": "Cardiac",
+            "HaemocoelInfo": {
+                "path": "HaemocoelSegResult_1.3.12.2.1107.5.1.4.60485.30000019112500335296800040896_120.0.raw"
+            },
+            "ImageQuality": [
+                0
+            ],
+            "VolumeID": "120.0",
+            "ReferencePath":[
+                {
+                    "Meaning": "FFRCT",
+                    "Description": "test",
+                    "LinkPath": "marchcube_1.vtp"
+                }
+            ],
+            "strSeriesUID": "1.3.12.2.1107.5.1.4.60485.30000019112500335296800040896"
+        }
+    ]
+}

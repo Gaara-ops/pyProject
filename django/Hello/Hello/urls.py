@@ -18,12 +18,22 @@ from django.urls import path
 from django.conf.urls import url
 
 from . import view
+from . import SnapshotManager
+from . import UserPersonalData
 
 urlpatterns = [
     #path('admin/', admin.site.urls),DownLoadAIFeedBack
 	url(r'^GetUserAIInfo$',view.GetUserAIInfo),
 	url(r'^SaveUserAIInfo$',view.SaveUserAIInfo),
-	url(r'^DownLoadAIFeedBack$',view.DownLoadAIFeedBack),
-	url(r'^GetDataFromAIStore$',view.GetDataFromAIStore),
-	url(r'^GetAIMiddleInfo$',view.GetAIMiddleInfo),
+	url(r'^GetAIResult$',view.DownLoadAIFeedBack),
+	url(r'^yizhen-aistore/imageAi/getAi2images$',view.GetDataFromAIStore),
+	url(r'^storage/webs/AI/GetAIMiddleResult$',view.GetAIMiddleInfo),
+	url(r'^storage/webs/AI/SubmitSnapshotResult$', SnapshotManager.SubmitSnapshotResult),  # 上传快照结果
+	url(r'^storage/webs/AI/GetSnapshotResult$', SnapshotManager.GetSnapshotResult),  # 获取快照结果
+	url(r'^storage/webs/AI/GetSnapshotList$', SnapshotManager.GetSnapshotList),  # 获取功能列表
+    #UserPersonalData
+    url(r'^storage/webs/iMages/SubmitUserPersonalData', UserPersonalData.SubmitUserPersonalData),
+    url(r'^storage/webs/iMages/GetUserPersonalDataList', UserPersonalData.GetUserPersonalDataList),
+    url(r'^storage/webs/iMages/GetUserPersonalData', UserPersonalData.GetUserPersonalData),
+    url(r'^storage/webs/iMages/DeleteUserPersonalData', UserPersonalData.DeleteUserPersonalData),
 ]

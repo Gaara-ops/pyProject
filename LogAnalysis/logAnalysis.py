@@ -93,7 +93,7 @@ def CalculateAllTime(strtime,threadid,strname):
 def LoadData(strfile):
     global allSaveData,DictTimeUse,DictTimeSpace
     lines=[]
-    with open(strfile) as pFile:
+    with open(strfile,encoding='utf-8') as pFile:
         lines = pFile.readlines()
     for line in lines:
         res1,strTime,strName,threadID = SaveInfo(line,flag1)
@@ -121,8 +121,9 @@ def LoadData(strfile):
             DictTime[strName] = strTime
             
     
-            
-logpath = 'G:/iMAGESServer/branches/Version2/Bin/Win32/Server/MinGW/Debug/SpiderSightServer/Log/log.log'
+
+#G:\iMAGESServer\branches\Version1\Bin\Win32\Server\MinGW\Debug\SpiderSightServer\Log
+logpath = 'G:/iMAGESServer/branches/Version5/Bin/Win32/Server/MinGW/Debug/SpiderSightServer/Log/log.log'
 LoadData(logpath)
 now_time = datetime.datetime.now()
 time_str = datetime.datetime.strftime(now_time,'%Y%m%d_%H_%M_%S')
